@@ -2,24 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuFunctions : MonoBehaviour
 {
     public Image creditsImage;
-    
 
-   void startGame()
+
+    private void Start()
     {
-
+        //creditsImage.enabled = false;
     }
 
-    void quitGame()
-    {
 
+    public void startGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    void showCredits()
+    public void quitGame()
     {
-        
+        Debug.Log("Quiting game");
+        Application.Quit();
+    }
+
+    public void showCredits()
+    {
+       // creditsImage.enabled = false;
     }
 }
