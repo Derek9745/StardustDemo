@@ -11,7 +11,8 @@ public class MenuFunctions : MonoBehaviour
 
     private void Start()
     {
-        //creditsImage.enabled = false;
+        
+       
     }
 
 
@@ -28,6 +29,6 @@ public class MenuFunctions : MonoBehaviour
 
     public void showCredits()
     {
-       // creditsImage.enabled = false;
+       
     }
 }
