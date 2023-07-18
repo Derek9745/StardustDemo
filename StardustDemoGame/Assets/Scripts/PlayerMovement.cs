@@ -11,14 +11,17 @@ public class PlayerMovement : MonoBehaviour
 
 
     public float speed = 6f;
+ 
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
 
     public Transform cam;
     public CharacterController controller;
+  
 
     private void Awake()
     {
+
         playercontrols = new PlayerControls();
         playercontrols.Player.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         playercontrols.Player.Move.canceled += ctx => move = Vector2.zero;
@@ -28,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         Vector3 direction = new Vector3(move.x, 0f, move.y ) * Time.deltaTime;
-
+      
         if (direction.magnitude >= 0.01f)
         {
 
@@ -37,12 +40,14 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
     }
