@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
-    
-    public Rigidbody rbody;
+
     public GameObject bullet;
 
+
+    public 
      void Awake()
     {
         
@@ -21,7 +23,8 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-       StartCoroutine(SelfDestruct());
+       
+        StartCoroutine(SelfDestruct());
     }
 
     IEnumerator SelfDestruct()

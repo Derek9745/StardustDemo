@@ -8,6 +8,6 @@ public class RotateScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        player.transform.Rotate(0f, 5 * Time.fixedDeltaTime, 0f, Space.Self);
+        player.transform.Rotate(0f,0f, 5 * Time.fixedDeltaTime, Space.Self);
     }
 }

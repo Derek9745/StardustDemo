@@ -1,36 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Shooting : MonoBehaviour
 {
-
     public Transform spawnPoint;
-    
+    public GameObject bulletPrefab;
+    public Rigidbody rb;
     public float moveForce = 25f;
-    GameObject bullet;
-    Rigidbody rb;
+    public float timeToFire = 3f;
 
- 
- 
-
-    void Awake()
+    void Start()
     {
-
-       rb = bullet.GetComponent<Rigidbody>();
+       
     }
 
-    void Update()
-    {
 
-      
-    }
 
     private void FixedUpdate()
     {
-        rb.AddForce(transform.forward * moveForce, ForceMode.Impulse);
-    }
 
+
+        
+    } 
+    
+
+    void spawnBullet()
+    {
+       Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+       rb.AddForce(transform.forward * moveForce, ForceMode.Impulse);
+
+    }
 
 
 }

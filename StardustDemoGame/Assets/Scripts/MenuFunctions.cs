@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuFunctions : MonoBehaviour
 {
-    public Image creditsImage;
+    public GameObject CreditText;
 
 
     private void Start()
     {
-        
-       
+
+        CreditText.SetActive(false);
     }
 
 
@@ -29,6 +29,6 @@ public class MenuFunctions : MonoBehaviour
 
     public void showCredits()
     {
-       
+        CreditText.SetActive(true);
     }
 }

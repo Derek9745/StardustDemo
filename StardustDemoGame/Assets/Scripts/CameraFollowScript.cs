@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class CameraFollowScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform target;
+    public float smoothSpeed = 5f;
 
-    // Update is called once per frame
-    void Update()
+
+    public void FixedUpdate()
     {
         
     }
