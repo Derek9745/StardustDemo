@@ -8,37 +8,16 @@ public class Bullet : MonoBehaviour
 
     public GameObject bullet;
 
-
-    public 
-     void Awake()
+    private void Start()
     {
-        
+        Destroy(gameObject, 3);
     }
-
-    [SerializeField] private float timeToSelfDestruct = 5f;
-    void Update()
-    {
-
-    }
-
-    private void OnEnable()
-    {
-       
-        StartCoroutine(SelfDestruct());
-    }
-
-    IEnumerator SelfDestruct()
-    {
-       yield return new WaitForSeconds(timeToSelfDestruct);
-        Destroy(bullet);
-   }
-
 
 
     private void OnCollisionEnter(Collision collision)
     {   
-     
-          Destroy(bullet);
+      
+          Destroy(gameObject);
     }
 
 
