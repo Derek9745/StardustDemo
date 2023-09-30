@@ -2,26 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
-     PlayerControls playercontrols;
+    PlayerControls playercontrols;
     public CharacterController controller;
     Vector2 move;
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
     public Transform cam;
+    public GameObject image;
     void Awake()
     {
         playercontrols = new PlayerControls();
         playercontrols.Player.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         playercontrols.Player.Move.canceled += ctx => move = Vector2.zero;
+        playercontrols.Player.StartButton.performed += ctx => GameManagerScript.instance.Pause();
+
+        
     }
 
     void Update()
     {
         Move();
+        if (image.activeInHierarchy == true)
+        {
+            Time.timeScale = 0f;
+        }
     }
 
     private void Move()
@@ -37,6 +46,7 @@ public class Movement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
+            Mathf.Clamp(moveDir.y, .5f, .5f);
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
         }
