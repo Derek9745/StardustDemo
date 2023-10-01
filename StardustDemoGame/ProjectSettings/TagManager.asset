@@ -7,11 +7,12 @@ TagManager:
   - Wall
   - Bullet
   - Enemy
+  - ForceField
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Meteor
   - Water
   - UI
   - Wall

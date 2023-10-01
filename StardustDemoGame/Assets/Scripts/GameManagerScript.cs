@@ -7,10 +7,9 @@ using UnityEngine.UI;
 public class GameManagerScript : MonoBehaviour
 {
     public int playerLives = 3;
-    public TextMeshProUGUI livesText;
-    public static GameManagerScript instance;
+    public static GameManagerScript instance = null;
     public GameObject image;
-    public bool GameIsPaused;
+    public  bool GameIsPaused;
 
    
     private void Awake()
@@ -29,15 +28,7 @@ public class GameManagerScript : MonoBehaviour
         image.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (playerLives <= 0)
-        {
-            image.SetActive(true);
-            Pause();
-            
-        }
-    }
+    
 
      public void Pause()
     {

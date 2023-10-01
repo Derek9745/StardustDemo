@@ -12,10 +12,10 @@ public class Shooting : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("spawnBullet", 0f, .2f);
+        InvokeRepeating("spawnBullet", 0f, .1f);
     }
 
-    void spawnBullet()
+    public void spawnBullet()
     { 
         GameObject bullet = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
         Rigidbody wb = bullet.GetComponent<Rigidbody>();

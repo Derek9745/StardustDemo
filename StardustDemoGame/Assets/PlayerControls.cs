@@ -53,6 +53,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BulletFire"",
+                    ""type"": ""Value"",
+                    ""id"": ""5eebaa34-8f2a-4a4f-b372-c99e21726321"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""StartButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff10763f-a900-40b5-97ca-efae2145f01f"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BulletFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -99,6 +119,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_StartButton = m_Player.FindAction("StartButton", throwIfNotFound: true);
+        m_Player_BulletFire = m_Player.FindAction("BulletFire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,6 +182,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_StartButton;
+    private readonly InputAction m_Player_BulletFire;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -168,6 +190,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @StartButton => m_Wrapper.m_Player_StartButton;
+        public InputAction @BulletFire => m_Wrapper.m_Player_BulletFire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -186,6 +209,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StartButton.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartButton;
                 @StartButton.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartButton;
                 @StartButton.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartButton;
+                @BulletFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBulletFire;
+                @BulletFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBulletFire;
+                @BulletFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBulletFire;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -199,6 +225,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @StartButton.started += instance.OnStartButton;
                 @StartButton.performed += instance.OnStartButton;
                 @StartButton.canceled += instance.OnStartButton;
+                @BulletFire.started += instance.OnBulletFire;
+                @BulletFire.performed += instance.OnBulletFire;
+                @BulletFire.canceled += instance.OnBulletFire;
             }
         }
     }
@@ -208,5 +237,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnStartButton(InputAction.CallbackContext context);
+        void OnBulletFire(InputAction.CallbackContext context);
     }
 }
