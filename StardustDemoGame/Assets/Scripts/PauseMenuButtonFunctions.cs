@@ -7,13 +7,15 @@ public class PauseMenuButtonFunctions : MonoBehaviour
     public void returnToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        GameManagerScript.instance.Pause();
     
     }
 
     public void restartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+        GameManagerScript.instance.Pause();
+        GameManagerScript.instance.playerLives = 3;
     }
 
     public void continueButton()

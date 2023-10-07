@@ -8,9 +8,9 @@ public class GameManagerScript : MonoBehaviour
 {
     public int playerLives = 3;
     public static GameManagerScript instance = null;
+    public SceneInfo sceneInfo;
     public GameObject image;
-    public  bool GameIsPaused;
-
+    public GameObject continueText;
    
     private void Awake()
     {
@@ -24,25 +24,26 @@ public class GameManagerScript : MonoBehaviour
             Destroy(instance);
             Debug.Log("Warning: there is already another instance of this object!");
         }
-        GameIsPaused = false;
+        sceneInfo.isPaused = false;
         image.SetActive(false);
+        continueText.SetActive(true);
     }
 
     
 
      public void Pause()
     {
-        if (GameIsPaused == false)
+        if (sceneInfo.isPaused == false)
         {
             Time.timeScale = 0f;
             image.SetActive(true);
-            GameIsPaused = true;
+            sceneInfo.isPaused = true;
         }
-        else if(GameIsPaused == true)
+        else if(sceneInfo.isPaused == true)
         {
             Time.timeScale = 1f;
             image.SetActive(false);
-            GameIsPaused = false;
+            sceneInfo.isPaused = false;
         }
         
     }

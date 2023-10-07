@@ -19,6 +19,8 @@ public class Movement : MonoBehaviour
     public Transform centerCube;
     public GameObject planet;
     public GameObject player;
+   // Vector3 direction;
+    //Vector3 adjustedDirection;
     void Awake()
     {
         playercontrols = new PlayerControls();
@@ -38,26 +40,27 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        Vector3 direction = new Vector3(move.x * 2, 0f, move.y * 2) * Time.deltaTime;// gets joystick input and places it into a vector 3 direction
+            Vector3 direction = new Vector3(move.x * 2, 0f, move.y * 2) * Time.deltaTime;// gets joystick input and places it into a vector 3 direction
 
-        if (direction.magnitude >= 0.01f)
-        {
+            if (direction.magnitude >= 0.01f)
+            {
 
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            //rb.AddForce((planet.transform.position - player.transform.position).normalized * 10);
-            //player.transform.rotation = Quaternion.LookRotation(planet.transform.position - player.transform.position, transform.up);
-        
+                //rb.AddForce((planet.transform.position - player.transform.position).normalized * 10);
+                //player.transform.rotation = Quaternion.LookRotation(planet.transform.position - player.transform.position, transform.up);
 
-            rb.MovePosition(rb.position + moveDir.normalized * speed * Time.deltaTime);
-        
 
+                rb.MovePosition(rb.position + moveDir.normalized * speed * Time.deltaTime);
+
+
+            }
         }
-    }
+    
 
     private void Rotate()
     {
@@ -73,8 +76,16 @@ public class Movement : MonoBehaviour
         }
     }
 
-   
-  
+    void OnDrawGizmosSelected()
+    {
+        // Draws a 5 unit long red line in front of the object
+       // Gizmos.color = Color.red;
+       // Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
+        //Vector3 updirection = transform.TransformDirection(Vector3.up) * 5;
+       // Gizmos.DrawRay(transform.position, direction);
+        //Gizmos.DrawRay(transform.position, updirection);
+    }
+
 
     void OnEnable()
      {

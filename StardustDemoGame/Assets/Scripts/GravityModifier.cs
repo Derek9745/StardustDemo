@@ -6,16 +6,19 @@ public class GravityModifier : MonoBehaviour
 {
     public Transform player;
     public Transform planet;
-    public CharacterController controller;
     int acceleration = 3;
     float gravity = 9.8f;
-    float vSpeed;
+    public Rigidbody rb;
+   
+  
      
-    void Update()
+    void FixedUpdate()
     {
-       // transform position = planet.transform - player.transform;
-        //vSpeed = gravity * Time.deltaTime;
-        //controller.Move(position * vSpeed);
-        //transform.rotation = Quaternion.LookRotation(planet.position - transform.position, transform.up);
+        //Vector3 diff = (planet.transform.position - player.transform.position);
+        //rb.AddForce(diff.normalized * gravity * rb.mass);
+        //player.transform.rotation = Quaternion.FromToRotation(Vector3.up, -diff) * transform.rotation;
+        
     }
+
+    
 }

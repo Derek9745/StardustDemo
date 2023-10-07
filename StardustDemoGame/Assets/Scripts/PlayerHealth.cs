@@ -55,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
                 Destroy(player);
                 livesText.SetText("X " + 0);
                 GameManagerScript.instance.Pause();
+                GameManagerScript.instance.continueText.SetActive(false);
             }
         }
     }

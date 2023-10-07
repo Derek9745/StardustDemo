@@ -5,25 +5,18 @@ using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
-
-    public GameObject bullet;
-
-    private void Start()
-    {
-        Destroy(gameObject, 3);
-    }
-
-
+  
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "ForceField")
+        if (collision.gameObject.tag != "Bullet")
         {
-            Destroy(gameObject);
+            if (collision.gameObject.tag != "Player")
+            {
+                ObjectPooler.Instance.ReturnToPool(gameObject, "Bullet");
+            }
         }
 
     }
-
-
 
 
 

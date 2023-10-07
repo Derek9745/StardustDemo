@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5487045465151894923}
   - component: {fileID: 2324332476315086750}
   - component: {fileID: 7303416181112321247}
-  - component: {fileID: 3013609247414644855}
   - component: {fileID: 8392087234036404106}
   - component: {fileID: 1552938577656377672}
   - component: {fileID: 1006654320117987016}
   - component: {fileID: 785266788532001281}
+  - component: {fileID: -7042047206442308889}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -88,20 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3013609247414644855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6778720127182390866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf6d7faadf04b7842b607eedb9e5623e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 6778720127182390866}
-  wb: {fileID: 8392087234036404106}
 --- !u!54 &8392087234036404106
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4911,3 +4897,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-7042047206442308889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778720127182390866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6d7faadf04b7842b607eedb9e5623e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveForce: 25
+  wb: {fileID: 8392087234036404106}
+  spawnPoint: {fileID: 0}

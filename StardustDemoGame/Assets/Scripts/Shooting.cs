@@ -5,24 +5,30 @@ using UnityEngine.Pool;
 
 public class Shooting : MonoBehaviour
 {
+
+    public float moveForce = 25;
     public Transform spawnPoint;
-    public GameObject bulletPrefab;
- 
-    public float moveForce = 25f;
-
-    void Start()
+    public void Start()
     {
-        InvokeRepeating("spawnBullet", 0f, .1f);
-    }
 
-    public void spawnBullet()
-    { 
-        GameObject bullet = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        InvokeRepeating("Spawn", .0f, .1f);
+    }
+    public void Spawn()
+    {
+        GameObject bullet = ObjectPooler.Instance.SpawnFromPool("Bullet");
         Rigidbody wb = bullet.GetComponent<Rigidbody>();
         wb.AddForce(spawnPoint.forward * moveForce, ForceMode.Impulse);
-
-
     }
+
+    void OnDrawGizmosSelected()
+    {
+        // Draws a 5 unit long red line in front of the object
+        Gizmos.color = Color.red;
+         Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
+        Gizmos.DrawRay(transform.position, direction);
+        
+    }
+
 
 
 }
