@@ -12,7 +12,7 @@ public class Shooting : MonoBehaviour
     {
 
        InvokeRepeating("Spawn", .0f, .1f);
-       InvokeRepeating("MeteorSpawn", .0f, 1f);
+       InvokeRepeating("MeteorSpawn", .0f, 1.5f);
     }
     public void Spawn()
     {

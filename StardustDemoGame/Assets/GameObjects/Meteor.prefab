@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2552121254183425466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.92, y: 6.83, z: 17.92951}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fcd7f931a4ec2548bdd6c26aee3be63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticles: {fileID: 3215444915958272253, guid: 4f6422c9cf3343b46830a37a9c3d8921, type: 3}
 --- !u!54 &-2143868923238331634
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -138,5 +139,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 10
   m_CollisionDetection: 0

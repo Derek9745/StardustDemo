@@ -39,6 +39,7 @@ public class meteorDrop : MonoBehaviour
 
     void Death()
     {
+
         ObjectPooler.Instance.ReturnMeteorToPool(gameObject, "Spawner");
        // Destroy(EnemySpawnPoint, 4f);
     }
