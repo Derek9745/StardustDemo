@@ -12,7 +12,10 @@ public class Bullet : MonoBehaviour
         {
             if (collision.gameObject.tag != "Player")
             {
-                ObjectPooler.Instance.ReturnToPool(gameObject, "Bullet");
+                if (collision.gameObject.tag != "ForceField")
+                {
+                    ObjectPooler.Instance.ReturnToPool(gameObject, "Bullet");
+                }
             }
         }
 

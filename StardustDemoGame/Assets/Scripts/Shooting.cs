@@ -11,7 +11,8 @@ public class Shooting : MonoBehaviour
     public void Start()
     {
 
-        InvokeRepeating("Spawn", .0f, .1f);
+       InvokeRepeating("Spawn", .0f, .1f);
+       InvokeRepeating("MeteorSpawn", .0f, 1f);
     }
     public void Spawn()
     {
@@ -20,11 +21,16 @@ public class Shooting : MonoBehaviour
         wb.AddForce(spawnPoint.forward * moveForce, ForceMode.Impulse);
     }
 
+    public void MeteorSpawn()
+    {
+         ObjectPooler.Instance.SpawnMeteor("Spawner");
+    }
+
     void OnDrawGizmosSelected()
     {
         // Draws a 5 unit long red line in front of the object
         Gizmos.color = Color.red;
-         Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
         Gizmos.DrawRay(transform.position, direction);
         
     }

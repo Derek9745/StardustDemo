@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Enemy
   - ForceField
+  - Spawner
+  - Meteor
   layers:
   - Default
   - TransparentFX

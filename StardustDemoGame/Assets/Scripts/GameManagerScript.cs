@@ -11,6 +11,7 @@ public class GameManagerScript : MonoBehaviour
     public SceneInfo sceneInfo;
     public GameObject image;
     public GameObject continueText;
+ 
    
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class GameManagerScript : MonoBehaviour
         sceneInfo.isPaused = false;
         image.SetActive(false);
         continueText.SetActive(true);
+       //RenderSettings.
     }
 
     

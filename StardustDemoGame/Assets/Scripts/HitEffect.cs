@@ -18,12 +18,17 @@ public class HitEffect : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Bullet")
-        {
-            StartCoroutine(HitFlash());
-        }
+            if (collision.gameObject.tag == "Bullet")
+            {
+                StartCoroutine(HitFlash());
+            }
+            if(collision.gameObject.tag == "Meteor")
+            {
+            Destroy(gameObject);
+            }      
     }
 
+ 
     public IEnumerator HitFlash()
     {
         rend.material.color = Color.white;

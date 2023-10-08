@@ -13,10 +13,13 @@ public class meteorDrop : MonoBehaviour
     bool MeteorActive = false;
 
 
-    private void Start()
+    private void OnEnable()
     {
         Invoke("Spawn", 2.0f);
-        Destroy(EnemySpawnPoint, 4f);
+        Invoke("Death", 4f);
+        //Destroy(EnemySpawnPoint, 4f);
+        //ObjectPooler.Instance.ReturnMeteorToPool(gameObject, "Spawner");
+
     }
     private void Spawn()
     {
@@ -30,8 +33,14 @@ public class meteorDrop : MonoBehaviour
     {
         if (MeteorActive == true)
         {
-            meteorController.Move(Vector3.down * dropSpeed * Time.deltaTime);
+           // meteorController.Move(Vector3.down * dropSpeed * Time.deltaTime);
         }
+    }
+
+    void Death()
+    {
+        ObjectPooler.Instance.ReturnMeteorToPool(gameObject, "Spawner");
+       // Destroy(EnemySpawnPoint, 4f);
     }
 
 
