@@ -8,22 +8,17 @@ public class Shooting : MonoBehaviour
 
     public float moveForce = 25;
     public Transform spawnPoint;
-    public void Start()
+    public void OnEnable()
     {
 
        InvokeRepeating("Spawn", .0f, .1f);
-       InvokeRepeating("MeteorSpawn", .0f, 1.5f);
+       
     }
     public void Spawn()
     {
         GameObject bullet = ObjectPooler.Instance.SpawnFromPool("Bullet");
         Rigidbody wb = bullet.GetComponent<Rigidbody>();
         wb.AddForce(spawnPoint.forward * moveForce, ForceMode.Impulse);
-    }
-
-    public void MeteorSpawn()
-    {
-         ObjectPooler.Instance.SpawnMeteor("Spawner");
     }
 
     void OnDrawGizmosSelected()

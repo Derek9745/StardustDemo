@@ -24,10 +24,8 @@ public class EnemyHealthScript : MonoBehaviour
     }
 
     void RemoveObject()
-    {
-
+    { 
         Instantiate(deathParticles, transform.position, Quaternion.identity);
-        //ObjectPooler.Instance.ReturnMeteorToPool(gameObject, "Spawner");
         Destroy(gameObject);
 
     }

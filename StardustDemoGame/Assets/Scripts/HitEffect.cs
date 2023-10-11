@@ -7,6 +7,7 @@ public class HitEffect : MonoBehaviour
     Color originalColor;
     Renderer rend;
     float duration = .3f;
+    public ParticleSystem deathParticles;
   
     
     void Start()
@@ -18,13 +19,17 @@ public class HitEffect : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-            if (collision.gameObject.tag == "Bullet")
+        
+
+        if (collision.gameObject.tag == "Bullet")
             {
                 StartCoroutine(HitFlash());
             }
             if(collision.gameObject.tag == "Meteor")
             {
-            Destroy(gameObject);
+                Instantiate(deathParticles, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                Debug.Log("Meteors hitting each other" + deathParticles.transform.position);
             }      
     }
 

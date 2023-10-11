@@ -17,6 +17,7 @@ public class ObjectPooler : MonoBehaviour
     public Dictionary<string, Queue<GameObject>> poolDictionary;
     public Transform spawnPoint;
     public static ObjectPooler Instance;
+    float callInvokeTime = 4f;
 
 
     private void Awake()
@@ -38,13 +39,12 @@ public class ObjectPooler : MonoBehaviour
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
+           
             }
 
             poolDictionary.Add(pool.tag, objectPool);
         }
     }
-
-
 
     public GameObject SpawnFromPool(string tag) 
     {
@@ -60,9 +60,7 @@ public class ObjectPooler : MonoBehaviour
         objectToSpawn.transform.position = spawnPoint.position;
         objectToSpawn.transform.rotation = spawnPoint.rotation;
         objectToSpawn.SetActive(true);
-        //Debug.Log(poolDictionary["Bullet"].Count);
 
-        
         return objectToSpawn;
     }
 
@@ -83,6 +81,7 @@ public class ObjectPooler : MonoBehaviour
         GameObject Meteor = poolDictionary[tag].Dequeue();
         Meteor.transform.position = new Vector3(Random.Range(5f,45f),.3f, Random.Range(5, 45f));
         Meteor.SetActive(true);
+ 
 
         return Meteor;
 
@@ -94,5 +93,5 @@ public class ObjectPooler : MonoBehaviour
         Meteor.SetActive(false);
      }
 
-
+  
 }

@@ -34,12 +34,12 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        Move();
+       
         Rotate();
        
     }
 
-    private void Move()
+    private void FixedUpdate()
     {
             Vector3 direction = new Vector3(move.x * 2, 0f, move.y * 2) * Time.deltaTime;// gets joystick input and places it into a vector 3 direction
 
@@ -50,10 +50,9 @@ public class Movement : MonoBehaviour
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
 
-            //rb.AddForce((planet.transform.position - player.transform.position).normalized * 10);
-            //player.transform.rotation = Quaternion.LookRotation(planet.transform.position - player.transform.position, transform.up);
+           
 
                  rb.MovePosition(rb.position + moveDir.normalized * speed * Time.deltaTime);
 
