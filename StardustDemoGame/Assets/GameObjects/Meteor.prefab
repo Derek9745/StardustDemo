@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1919562107265525865}
   - component: {fileID: 5504369601824944435}
   - component: {fileID: 1507115447642704308}
+  - component: {fileID: -9223198305007051381}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Meteor
@@ -142,3 +143,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-9223198305007051381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552121254183425466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54def5cf1d5a1041ad93054f6ff5d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Alien: {fileID: 219839832047614664, guid: a5da20b4e0255654199c49f6b3bd52cb, type: 3}
+  deathParticles: {fileID: 3215444915958272253, guid: 4f6422c9cf3343b46830a37a9c3d8921, type: 3}

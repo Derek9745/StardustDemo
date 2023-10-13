@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject player;
     public HealthBar healthBar;
     public HealthBar shieldBar;
-    public TextMeshProUGUI livesText;
+
     PlayerHealth playerHealth;
 
    
@@ -26,12 +26,12 @@ public class PlayerHealth : MonoBehaviour
 
         currentShieldHealth = defaultShieldHealth;
         shieldBar.SetMaxHealth(defaultShieldHealth);
-        livesText.SetText( "X " + GameManagerScript.instance.playerLives);
+        GameManagerScript.instance.livesText.SetText( "X " + GameManagerScript.instance.playerLives);
     }
 
      private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Meteor")
         {
             TakeDamage(1);
         }
@@ -46,14 +46,14 @@ public class PlayerHealth : MonoBehaviour
         if (currentPlayerHealth <= 0)
         {
             GameManagerScript.instance.playerLives -= 1;
-            livesText.SetText("X " + GameManagerScript.instance.playerLives);
+            GameManagerScript.instance.livesText.SetText("X " + GameManagerScript.instance.playerLives);
             currentPlayerHealth = defaultPlayerHealth;
             healthBar.SetHealth(defaultPlayerHealth);
 
             if (GameManagerScript.instance.playerLives < 0)
             {
-                Destroy(player);
-                livesText.SetText("X " + 0);
+              
+                GameManagerScript.instance.livesText.SetText("X " + 0);
                 GameManagerScript.instance.Pause();
                 GameManagerScript.instance.continueText.SetActive(false);
             }

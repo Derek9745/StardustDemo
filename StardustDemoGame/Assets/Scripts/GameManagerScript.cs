@@ -11,8 +11,11 @@ public class GameManagerScript : MonoBehaviour
     public SceneInfo sceneInfo;
     public GameObject image;
     public GameObject continueText;
- 
-   
+    public TextMeshProUGUI ScoreText;
+    public GameObject Canvas;
+    public int ScoreValue = 0;
+    public TextMeshProUGUI livesText;
+
     private void Awake()
     {
         if(instance == null)
@@ -28,7 +31,8 @@ public class GameManagerScript : MonoBehaviour
         sceneInfo.isPaused = false;
         image.SetActive(false);
         continueText.SetActive(true);
-       //RenderSettings.
+        Canvas.SetActive(true);
+  
     }
 
     

@@ -30,7 +30,8 @@ public class HitEffect : MonoBehaviour
                 Instantiate(deathParticles, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 Debug.Log("Meteors hitting each other" + deathParticles.transform.position);
-            }      
+            }     
+            
     }
 
  
