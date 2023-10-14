@@ -22,15 +22,16 @@ public class HitEffect : MonoBehaviour
         
 
         if (collision.gameObject.tag == "Bullet")
-            {
-                StartCoroutine(HitFlash());
-            }
-            if(collision.gameObject.tag == "Meteor")
-            {
-                Instantiate(deathParticles, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-                Debug.Log("Meteors hitting each other" + deathParticles.transform.position);
-            }     
+        {
+            StartCoroutine(HitFlash());
+        }
+
+        if(collision.gameObject.tag == "Meteor")
+        {
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            Debug.Log("Meteors hitting each other" + deathParticles.transform.position);
+        }     
             
     }
 

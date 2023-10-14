@@ -10,6 +10,7 @@ TagManager:
   - ForceField
   - Spawner
   - Meteor
+  - Terrain
   layers:
   - Default
   - TransparentFX
