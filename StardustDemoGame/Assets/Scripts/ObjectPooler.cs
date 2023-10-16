@@ -78,12 +78,13 @@ public class ObjectPooler : MonoBehaviour
             Debug.LogWarning("Pool with tag" + tag + "doesn't exist");
             return null;
         }
-        GameObject Meteor = poolDictionary[tag].Dequeue();
-        Meteor.transform.position = new Vector3(Random.Range(5f,45f),.3f, Random.Range(5, 45f));
-        Meteor.SetActive(true);
+        GameObject MeteorSpawnPoint = poolDictionary[tag].Dequeue();
+        
+        //Meteor.transform.position = new Vector3(Random.Range(5f,45f),.3f, Random.Range(5, 45f));
+       // MeteorSpawnPoint.SetActive(true);
  
 
-        return Meteor;
+        return MeteorSpawnPoint;
 
     }
 

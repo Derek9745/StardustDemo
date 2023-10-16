@@ -7,7 +7,7 @@ public class MeteorSpawnMarker : MonoBehaviour
    
     void OnEnable()
     {
-        Invoke("Death", 4f);
+        Invoke("Death", 5f);
     }
 
     void Death()
