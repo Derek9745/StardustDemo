@@ -3307,7 +3307,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884681908}
-  m_LocalRotation: {x: 0.43650216, y: -0.000000015480639, z: 0.000000007510623, w: 0.89970326}
+  m_LocalRotation: {x: 0.43650216, y: -0.000000015480637, z: 0.000000007510622, w: 0.89970326}
   m_LocalPosition: {x: 25, y: 22.67, z: 5.550003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3621,11 +3621,9 @@ MonoBehaviour:
   - color: {r: 0, g: 0, b: 0, a: 1}
     prefab: {fileID: 4383716427315138676, guid: 2c271a39c995fd744ac30dc3cf93b5b5, type: 3}
   bitMapList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  currentMap: {fileID: 2800000, guid: d8b60303fc25e7942928fb9d5e12cc9c, type: 3}
+  - {fileID: 2800000, guid: d8b60303fc25e7942928fb9d5e12cc9c, type: 3}
+  - {fileID: 2800000, guid: a68a7e33cf62b894db286adcdcb700ac, type: 3}
+  - {fileID: 2800000, guid: 54256fc3df032114fa0bb5230f3ebfe7, type: 3}
   Meteor: {fileID: 5968783614980369110, guid: a6178558dfe15d443ad9f7da0de2c782, type: 3}
 --- !u!4 &1111187969
 Transform:
@@ -5138,7 +5136,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709552523}
-  m_LocalRotation: {x: 0.43650216, y: -0.000000015480639, z: 0.000000007510623, w: 0.89970326}
+  m_LocalRotation: {x: 0.43650216, y: -0.000000015480637, z: 0.000000007510622, w: 0.89970326}
   m_LocalPosition: {x: 25, y: 22.67, z: 5.550003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6056,7 +6054,7 @@ MonoBehaviour:
     size: 100
   - tag: Spawner
     prefab: {fileID: 4383716427315138676, guid: 2c271a39c995fd744ac30dc3cf93b5b5, type: 3}
-    size: 20
+    size: 40
   spawnPoint: {fileID: 404246018}
 --- !u!4 &2029187125
 Transform:
