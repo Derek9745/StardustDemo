@@ -15,6 +15,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject Canvas;
     public int ScoreValue = 0;
     public TextMeshProUGUI livesText;
+    public TextMeshProUGUI levelText;
 
     private void Awake()
     {

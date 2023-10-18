@@ -1,29 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+ 
     public ColorToPrefab[] colorMapping;
     public Texture2D[] bitMapList;
     Texture2D currentMap;
     GameObject MeteorSpawnPoint;
     public GameObject Meteor;
     Vector3 abovePos = new Vector3(0, 10, 0);
-
-    
-    enum LevelNum  {LEVEL_1, LEVEL_2, LEVEL_3, LEVEL_4, LEVEL_5 }
-
+    private int[] levelArray = { 1, 2, 3, 4, 5 };
+    public int currentLevel;
 
     IEnumerator Start()
     {
-   
-        for (int i = 0; i < bitMapList.Length; i++)
+        // loop through what the current game level is
+        for (int r = 0; r < levelArray.Length; r++)
         {
-            currentMap = bitMapList[i];
-            GenerateLevel();
-            Debug.Log("this is the current wave" + currentMap);
-            yield return new WaitForSeconds(10f);
+            currentLevel = levelArray[r];
+            GameManagerScript.instance.levelText.SetText("Level: " + currentLevel);
+            //loop through each bitmap/texture in the bitmaplist
+            for (int i = 0; i < bitMapList.Length; i++)
+            {
+                currentMap = bitMapList[i];
+                GenerateLevel();
+                Debug.Log("this is the current wave" + currentMap);
+                yield return new WaitForSeconds(10f);
+
+                
+
+               
+            }
         }
     }
     void SpawnMeteors()
