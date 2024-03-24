@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c740ae13007c02468a4cd54b94706a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 219839832047614662}
   deathParticles: {fileID: 3215444915958272253, guid: 4f6422c9cf3343b46830a37a9c3d8921, type: 3}
 --- !u!114 &4083605777916858469
 MonoBehaviour:

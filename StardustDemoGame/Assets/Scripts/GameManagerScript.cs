@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour
 {
+  
     public int playerLives = 3;
     public static GameManagerScript instance = null;
     public SceneInfo sceneInfo;

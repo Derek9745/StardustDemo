@@ -19,6 +19,8 @@ public class Shooting : MonoBehaviour
         GameObject bullet = ObjectPooler.Instance.SpawnFromPool("Bullet");
         Rigidbody wb = bullet.GetComponent<Rigidbody>();
         wb.AddForce(spawnPoint.forward * moveForce, ForceMode.Impulse);
+       
+        
     }
 
     void OnDrawGizmosSelected()

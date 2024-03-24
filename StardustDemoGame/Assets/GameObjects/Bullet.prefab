@@ -4909,3 +4909,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6d7faadf04b7842b607eedb9e5623e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRenderer: {fileID: 7303416181112321247}

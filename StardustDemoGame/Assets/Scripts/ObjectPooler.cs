@@ -10,15 +10,15 @@ public class ObjectPooler : MonoBehaviour
         public string tag;
         public GameObject prefab;
         public int size;
+        
     }
 
-   
+    public int currentSize;
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
     public Transform spawnPoint;
     public static ObjectPooler Instance;
-    float callInvokeTime = 4f;
-
+    //float callInvokeTime = 4f;
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class ObjectPooler : MonoBehaviour
         foreach(Pool pool in pools)
         {
 
-            Queue<GameObject> objectPool = new Queue<GameObject>();
+           Queue<GameObject> objectPool = new Queue<GameObject>();
 
 
             for (int i = 0; i < pool.size; i++)
@@ -39,6 +39,7 @@ public class ObjectPooler : MonoBehaviour
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
+                
            
             }
 
@@ -54,18 +55,23 @@ public class ObjectPooler : MonoBehaviour
             Debug.LogWarning("Pool with tag" + tag + "doesn't exist");
             return null;
         }
-
+        
+        currentSize = poolDictionary[tag].Count;
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
         objectToSpawn.GetComponent<Rigidbody>().velocity = Vector3.zero;
         objectToSpawn.transform.position = spawnPoint.position;
         objectToSpawn.transform.rotation = spawnPoint.rotation;
         objectToSpawn.SetActive(true);
+        //BulletLifeTime(objectToSpawn);
+        
+
 
         return objectToSpawn;
     }
 
     public void ReturnToPool(GameObject objectToSpawn, string tag)
     {
+  
         poolDictionary[tag].Enqueue(objectToSpawn);
         objectToSpawn.GetComponent<Rigidbody>().velocity = Vector3.zero;
         objectToSpawn.SetActive(false);
@@ -94,5 +100,9 @@ public class ObjectPooler : MonoBehaviour
         Meteor.SetActive(false);
      }
 
-  
+    void BulletLifeTime(GameObject objectToSpawn)
+    {
+      //wait 5 seconds then call returnToPool
+    }
+
 }

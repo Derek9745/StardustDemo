@@ -7,7 +7,7 @@ public class GravityModifier : MonoBehaviour
     public Transform player;
     public Transform planet;
     int acceleration = 3;
-    float gravity = 9.8f;
+    public float gravity = 9.8f;
     public Rigidbody rb;
    
   

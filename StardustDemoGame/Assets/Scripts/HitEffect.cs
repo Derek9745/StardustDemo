@@ -6,14 +6,25 @@ public class HitEffect : MonoBehaviour
 {
     Color originalColor;
     Renderer rend;
-    float duration = .3f;
+    //float duration = .3f;
     public ParticleSystem deathParticles;
   
     
     void Start()
     {
-        rend = GetComponent<Renderer>();
-        originalColor = rend.material.color;
+        {
+            // pass true in order to also include disabled or inactive child Renderer
+            foreach (var rend in GetComponentsInChildren<Renderer>(true))
+            {
+              
+                originalColor = rend.material.color;
+            }
+        }
+
+
+
+        //rend = GetComponent<Renderer>();
+        
         
     }
 
@@ -23,7 +34,7 @@ public class HitEffect : MonoBehaviour
 
         if (collision.gameObject.tag == "Bullet")
         {
-            StartCoroutine(HitFlash());
+            //StartCoroutine(HitFlash());
         }
 
         if(collision.gameObject.tag == "Meteor")
@@ -36,10 +47,10 @@ public class HitEffect : MonoBehaviour
     }
 
  
-    public IEnumerator HitFlash()
-    {
-        rend.material.color = Color.white;
-        yield return new WaitForSeconds(duration);
-        rend.material.color = originalColor;
-    }
+    //public IEnumerator HitFlash()
+   // {
+        //rend.material.color = Color.white;
+        //yield return new WaitForSeconds(duration);
+        //rend.material.color = originalColor;
+  // }
 }

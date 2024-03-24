@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
+
+    [SerializeField]
+    private LayerMask whatIsGround; 
+
     PlayerControls playercontrols;
     public Shooting shoot;
     public Rigidbody rb;
@@ -16,12 +20,12 @@ public class Movement : MonoBehaviour
     public float turnSmoothVelocity;
     public Transform cam;
     public GameObject image;
-    public Transform centerCube;
     public GameObject planet;
     public GameObject player;
+    public float gravity = 9.8f;
+    public Transform centerCube;
 
-    // Vector3 direction;
-    //Vector3 adjustedDirection;
+   
     void Awake()
     {
         playercontrols = new PlayerControls();
@@ -36,35 +40,28 @@ public class Movement : MonoBehaviour
     {
        
         Rotate();
-       
+        //SurfaceAlignment();
     }
 
     private void FixedUpdate()
     {
-            Vector3 direction = new Vector3(move.x * 2, 0f, move.y * 2) * Time.deltaTime;// gets joystick input and places it into a vector 3 direction
-
-            if (direction.magnitude >= 0.01f)
-            {
-
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-                Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
-
-           
-
-                 rb.MovePosition(rb.position + moveDir.normalized * speed * Time.deltaTime);
-
-
-
-        }
+        //ApplyGravity();
+        Move();
     }
 
-   
+    void Move()
+    {
+        Vector3 direction = new Vector3(move.x * 2, 0f, move.y * 2) * Time.deltaTime;// gets joystick input and places it into a vector 3 direction
 
-
-
+        if (direction.magnitude >= 0.01f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
+            rb.MovePosition(rb.position + moveDir.normalized * speed * Time.deltaTime);
+        }
+    }
 
     private void Rotate()
     {
@@ -75,21 +72,21 @@ public class Movement : MonoBehaviour
             float targetAngle = Mathf.Atan2(rotateDirection.x, rotateDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             centerCube.transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
-
-
         }
     }
 
-    void OnDrawGizmosSelected()
+    private void ApplyGravity()
     {
-        // Draws a 5 unit long red line in front of the object
-       // Gizmos.color = Color.red;
-       // Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
-        //Vector3 updirection = transform.TransformDirection(Vector3.up) * 5;
-       // Gizmos.DrawRay(transform.position, direction);
-        //Gizmos.DrawRay(transform.position, updirection);
+
+        Vector3 diff = (planet.transform.position - player.transform.position);
+        rb.AddForce(diff.normalized * gravity * rb.mass);
+        player.transform.rotation = Quaternion.FromToRotation(Vector3.up, -diff) * transform.rotation;
     }
 
+    private void SurfaceAlignment()
+    {
+
+    }
 
     void OnEnable()
      {
